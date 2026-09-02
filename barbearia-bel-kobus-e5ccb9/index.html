@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barbearia Bel Kobus — Poços de Caldas</title>
+<meta name="description" content="Barbearia Bel Kobus, barbearia em Poços de Caldas. Telefone +5535991492909.">
+<meta name="robots" content="noindex, nofollow">
+
+<script>
+/* Marca o documento como "vai animar" antes do primeiro paint, evitando que o
+   conteudo apareca e depois pule. So liga se o usuario nao pediu menos
+   movimento -- e o rodape remove a marca se o GSAP nao carregar, para que uma
+   falha de CDN nunca deixe a pagina em branco. */
+(function () {
+  try {
+    var q = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!q || !q.matches) { document.documentElement.className += " js-anim"; }
+  } catch (e) { /* sem matchMedia: fica estatico, que e o lado seguro */ }
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+
+<style>
+:root {
+  --ink:      #12161c;
+  --ink-70:   #4a5361;
+  --ink-45:   #7c8797;
+  --paper:    #ffffff;
+  --surface:  #f3f5f8;
+  --line:     #e2e7ee;
+  --accent:      #a21764;
+  --accent-deep: #831843;
+  --accent-wash: #fdeef6;
+
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.1;
+  text-wrap: balance;
+  font-variation-settings: "SOFT" 20, "WONK" 1;
+}
+
+p { margin: 0; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+.wrap { width: 100%; max-width: 1080px; margin-inline: auto; padding-inline: 20px; }
+
+/* ── the banner that keeps this honest ───────────────────── */
+.proposal {
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 12px 0;
+}
+.proposal .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  justify-content: center;
+  text-align: center;
+}
+.proposal b { font-weight: 600; }
+.proposal a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── hero ─────────────────────────────────────────────────── */
+.hero {
+  background:
+    radial-gradient(120% 90% at 80% 0%, var(--accent-wash) 0%, transparent 62%),
+    var(--paper);
+  padding-block: clamp(56px, 10vw, 104px);
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 18px;
+}
+
+.hero h1 { font-size: clamp(40px, 8vw, 76px); letter-spacing: -0.02em; }
+
+.hero__sub {
+  margin-top: 20px;
+  font-size: clamp(18px, 2.4vw, 21px);
+  color: var(--ink-70);
+  max-width: 34rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 15px 26px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 20px -10px var(--accent);
+}
+.btn--primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
+.btn--ghost { border-color: var(--line); color: var(--ink); background: var(--paper); }
+.btn--ghost:hover { border-color: var(--ink-45); }
+
+/* ── trust strip ──────────────────────────────────────────── */
+.strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.strip > div { background: var(--surface); padding: 26px 20px; }
+.strip dt { font-size: 13px; color: var(--ink-45); margin-bottom: 6px; }
+.strip dd {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── content ──────────────────────────────────────────────── */
+.section { padding-block: clamp(48px, 8vw, 88px); }
+.section + .section { border-top: 1px solid var(--line); }
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.section h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.015em; margin-bottom: 18px; }
+.section p + p { margin-top: 14px; }
+.lede { color: var(--ink-70); }
+
+.hours { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.hours td { padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+.hours td:last-child { text-align: right; color: var(--ink-70); white-space: nowrap; }
+.hours tr:last-child td { border-bottom: 0; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px;
+}
+.card h3 { font-size: 21px; margin-bottom: 10px; }
+.card p { color: var(--ink-70); font-size: 16px; }
+
+.contact-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+.contact-line dt { color: var(--ink-45); }
+.contact-line dd { margin: 0; font-weight: 500; text-align: right; }
+.contact-line a { color: var(--accent-deep); text-decoration: none; font-weight: 600; }
+
+/* ── call to action ───────────────────────────────────────── */
+.cta {
+  background: var(--ink);
+  color: #fff;
+  padding-block: clamp(48px, 8vw, 88px);
+  text-align: center;
+}
+.cta h2 { font-size: clamp(30px, 5vw, 44px); color: #fff; }
+.cta p { color: #aeb7c4; margin-top: 14px; font-size: 18px; }
+.cta .actions { justify-content: center; }
+.cta .btn--ghost { background: transparent; color: #fff; border-color: #39414e; }
+.cta .btn--ghost:hover { border-color: #fff; }
+
+/* ── footer ───────────────────────────────────────────────── */
+.foot {
+  background: var(--surface);
+  padding-block: 40px;
+  font-size: 14px;
+  color: var(--ink-45);
+  border-top: 1px solid var(--line);
+}
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+.foot a { color: var(--ink-70); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Estado inicial das animacoes. Tudo aqui depende de .js-anim, que so existe
+   quando ha JS e o usuario aceita movimento. Sem a classe, a pagina renderiza
+   normalmente -- nada de conteudo invisivel por falha de script. */
+.js-anim .anim-up   { opacity: 0; transform: translateY(20px); }
+.js-anim .anim-in   { opacity: 0; }
+.js-anim .hours tr  { opacity: 0; }
+.js-anim .strip > div { opacity: 0; transform: translateY(14px); }
+</style>
+</head>
+<body>
+
+<div class="proposal">
+  <div class="wrap">
+    <span>Este é um site de demonstração, feito de graça para <b>Barbearia Bel Kobus</b> — não é a página oficial da empresa.</span>
+    <span>Feito por Gabriel Alderige</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow anim-up">Barbearia · Poços de Caldas, MG</p>
+
+    <h1 class="anim-up">Barbearia Bel Kobus</h1>
+
+    <p class="hero__sub anim-up">Barbearia em Poços de Caldas, MG. Ligue, passe aqui ou veja o mapa abaixo.</p>
+
+    <div class="actions anim-up">
+      <a class="btn btn--primary" href="tel:+5535991492909">Ligar (35) 99149-2909</a>
+      <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=-21.80152130126953,-46.572078704833984" target="_blank" rel="noopener">Como chegar</a>
+    </div>
+  </div>
+</header>
+
+
+<section class="section anim-up">
+  <div class="wrap cols">
+    <div>
+      <h2>Sobre Barbearia Bel Kobus</h2>
+      <p class="lede">Barbearia Bel Kobus — barbearia em Poços de Caldas. Endereço: Av. Melvin Jones, 618. O jeito mais rápido de falar com a equipe é por telefone.</p>
+    </div>
+
+    <div class="card anim-up">
+      <h3>Contato</h3>
+      <dl style="margin:14px 0 0">
+        <div class="contact-line"><dt>Telefone</dt><dd><a href="tel:+5535991492909">(35) 99149-2909</a></dd></div>
+        <div class="contact-line"><dt>Endereço</dt><dd>Av. Melvin Jones, 618</dd></div>
+        <div class="contact-line" style="border-bottom:0"><dt>Mapa</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=-21.80152130126953,-46.572078704833984" target="_blank" rel="noopener">Abrir no Google Maps</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+
+<section class="cta anim-up">
+  <div class="wrap">
+    <h2>Gostou do site?</h2>
+    <p>Levei alguns minutos para montar, e ele é seu se quiser. Dá para colocar no seu próprio domínio, incluir fotos, cardápio ou formulário de agendamento, e manter atualizado.</p>
+    <div class="actions anim-up">
+      <a class="btn btn--primary" href="https://wa.me/5535998416972?text=Oi%2C%20vi%20o%20site%20que%20voc%C3%AA%20fez%20para%20Barbearia%20Bel%20Kobus" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      <a class="btn btn--ghost" href="tel:+55 35 99841-6972">Ligar (35) 99841-6972</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Site de demonstração para Barbearia Bel Kobus · dados vindos do perfil público da empresa no Google</span>
+    <span>Feito por Gabriel Alderige · <a href="https://gabrielalderige.github.io/portfolio/" target="_blank" rel="noopener">portfolio</a></span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  var raiz = document.documentElement;
+  function desligar() { raiz.className = raiz.className.replace(" js-anim", ""); }
+
+  /* Rede de seguranca: se o GSAP nao carregar (CDN fora, bloqueador, rede do
+     cliente), o estado inicial das animacoes deixaria a pagina em branco.
+     Melhor uma pagina estatica do que uma pagina vazia. */
+  if (!window.gsap || !window.ScrollTrigger) { desligar(); return; }
+  if (raiz.className.indexOf("js-anim") === -1) { return; }
+
+  gsap.registerPlugin(ScrollTrigger);
+  var facil = "power2.out";
+
+  /* Entrada do topo: o nome do negocio e o que precisa chegar primeiro. */
+  var t = gsap.timeline({ defaults: { duration: 0.7, ease: facil } });
+  t.to(".hero .anim-up", { opacity: 1, y: 0, stagger: 0.09 });
+
+  /* Barra de numeros: entra junto e conta o valor, quando existir. */
+  gsap.to(".strip > div", {
+    opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: facil,
+    scrollTrigger: { trigger: ".strip", start: "top 88%" }
+  });
+
+  document.querySelectorAll(".strip dd").forEach(function (dd) {
+    var texto = dd.textContent.trim();
+    /* Preserva o que nao e numero. "6 dias/semana" tem que voltar como
+       "6 dias/semana", nao como "6" -- o contador ja comeu esse sufixo uma vez. */
+    var partes = texto.match(/^([^0-9]*)([0-9][0-9.,]*)(.*)$/);
+    if (!partes) { return; }
+    var prefixo = partes[1], sufixo = partes[3];
+    var estrela = texto.indexOf("★") !== -1;
+    var alvo = parseFloat(texto.replace(/[^0-9.,]/g, "").replace(",", "."));
+    if (isNaN(alvo) || alvo <= 0) { return; }
+    var casas = estrela ? 1 : 0;
+    var obj = { v: 0 };
+    gsap.to(obj, {
+      v: alvo, duration: 1.1, ease: facil,
+      scrollTrigger: { trigger: dd, start: "top 92%" },
+      onUpdate: function () {
+        var n = casas ? obj.v.toFixed(1) : Math.round(obj.v).toLocaleString("pt-BR");
+        dd.textContent = prefixo + n + sufixo;
+      }
+    });
+  });
+
+  /* Blocos de conteudo sobem conforme a rolagem. */
+  gsap.utils.toArray(".anim-up:not(.hero .anim-up)").forEach(function (el) {
+    if (el.closest(".hero")) { return; }
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.7, ease: facil,
+      scrollTrigger: { trigger: el, start: "top 85%" }
+    });
+  });
+
+  /* Linhas de horario entram em cascata. */
+  gsap.to(".hours tr", {
+    opacity: 1, duration: 0.4, stagger: 0.05, ease: facil,
+    scrollTrigger: { trigger: ".hours", start: "top 85%" }
+  });
+
+  /* Se algo travar antes de rodar, mostra tudo em 2,5s. */
+  setTimeout(function () {
+    document.querySelectorAll(".js-anim .anim-up, .js-anim .strip > div, .js-anim .hours tr")
+      .forEach(function (el) {
+        var s = window.getComputedStyle(el);
+        if (parseFloat(s.opacity) === 0) { el.style.opacity = 1; el.style.transform = "none"; }
+      });
+  }, 2500);
+})();
+</script>
+</body>
+</html>
