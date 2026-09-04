@@ -2,379 +2,711 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Original Espaço de Beleza — Poços de Caldas</title>
-<meta name="description" content="Original Espaço de Beleza, salão de beleza em Poços de Caldas. Telefone +553537216342.">
-<meta name="robots" content="noindex, nofollow">
-
-<script>
-/* Marca o documento como "vai animar" antes do primeiro paint, evitando que o
-   conteudo apareca e depois pule. So liga se o usuario nao pediu menos
-   movimento -- e o rodape remove a marca se o GSAP nao carregar, para que uma
-   falha de CDN nunca deixe a pagina em branco. */
-(function () {
-  try {
-    var q = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (!q || !q.matches) { document.documentElement.className += " js-anim"; }
-  } catch (e) { /* sem matchMedia: fica estatico, que e o lado seguro */ }
-})();
-</script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Original Espaço de Beleza · Salão de beleza em Poços de Caldas</title>
+<meta name="description" content="Original Espaço de Beleza, salão de beleza em Poços de Caldas, na R. 15 de Novembro, 303. Fale pelo WhatsApp e agende seu horário.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
-
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink:      #12161c;
-  --ink-70:   #4a5361;
-  --ink-45:   #7c8797;
-  --paper:    #ffffff;
-  --surface:  #f3f5f8;
-  --line:     #e2e7ee;
-  --accent:      #a21764;
-  --accent-deep: #831843;
-  --accent-wash: #fdeef6;
-
-  --display: "Fraunces", Georgia, "Times New Roman", serif;
-  --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+:root{
+  --canvas:#F0EDE7;
+  --paper:#FFFFFF;
+  --ink:#241F1D;
+  --muted:#5C5550;
+  --line:#DED8D0;
+  --line-soft:#E7E2DB;
+  --wine:#63263A;
+  --wine-deep:#4A1B2B;
+  --dark:#241E1C;
+  --dark-muted:#B9AFA8;
+  --display:'Familjen Grotesk',Georgia,serif;
+  --text:'Karla',Georgia,serif;
+  --ease:cubic-bezier(.52,.01,0,1);
+  --pad:20px;
 }
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 17px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--text);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
 }
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;margin:0;letter-spacing:-.02em;line-height:1.05}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%}
 
-h1, h2, h3 {
-  font-family: var(--display);
-  font-weight: 600;
-  margin: 0;
-  line-height: 1.1;
-  text-wrap: balance;
-  font-variation-settings: "SOFT" 20, "WONK" 1;
+/* ---------- aviso ---------- */
+.aviso{
+  background:var(--wine-deep);color:#F6EFEF;
+  padding:12px var(--pad);font-size:14.5px;line-height:1.45;
 }
+.aviso strong{font-weight:600;color:#fff}
+.aviso span{display:block;opacity:.82;margin-top:2px;font-size:13.5px}
 
-p { margin: 0; }
-a { color: inherit; }
-img { max-width: 100%; display: block; }
+/* ---------- grade / container ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.col{max-width:620px}
 
-.wrap { width: 100%; max-width: 1080px; margin-inline: auto; padding-inline: 20px; }
-
-/* ── the banner that keeps this honest ───────────────────── */
-.proposal {
-  background: var(--ink);
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.5;
-  padding: 12px 0;
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(240,237,231,.86);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;transition:border-color .3s var(--ease),background .3s var(--ease);
 }
-.proposal .wrap {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px 14px;
-  justify-content: center;
-  text-align: center;
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(240,237,231,.95)}
+.nav-grid{
+  max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto auto;align-items:stretch;
+  border-left:1px solid var(--line-soft);border-right:1px solid var(--line-soft);
 }
-.proposal b { font-weight: 600; }
-.proposal a {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.nav-cell{display:flex;align-items:center;padding:12px 16px;border-right:1px solid var(--line-soft)}
+.nav-cell:last-child{border-right:0}
+.nav-brand{font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:-.01em;text-decoration:none;line-height:1.1}
+.nav-brand em{font-style:normal;display:block;font-family:var(--text);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.nav-links{display:none}
+.nav-links a{text-decoration:none;font-size:15.5px;color:var(--muted);padding:0 14px;border-right:1px solid var(--line-soft);display:flex;align-items:center;height:100%}
+.nav-links a:last-child{border-right:0}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;background:var(--wine);color:#fff;
+  text-decoration:none;padding:11px 16px;border-radius:2px;font-size:15px;font-weight:500;
 }
+.burger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:2px;background:transparent;cursor:pointer}
+.burger span{display:block;width:18px;height:1px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1px;background:var(--ink)}
+.burger span::before{top:-5px}.burger span::after{top:5px}
+#menu-toggle{position:absolute;opacity:0;pointer-events:none}
+.menu-mobile{display:none;border-top:1px solid var(--line-soft);background:var(--canvas)}
+#menu-toggle:checked ~ .menu-mobile{display:block}
+.menu-mobile a{display:block;padding:14px var(--pad);text-decoration:none;font-size:16.5px;border-bottom:1px solid var(--line-soft)}
+.menu-mobile a:last-child{border-bottom:0}
 
-/* ── hero ─────────────────────────────────────────────────── */
-.hero {
+/* ---------- hero: grade exposta ---------- */
+.hero{border-bottom:1px solid var(--line)}
+.hero-grid{
+  max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-left:1px solid var(--line);border-right:1px solid var(--line);
+}
+.cell{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:18px var(--pad)}
+.cell:nth-child(4n),.cell.full{border-right:0}
+.cell.full{grid-column:1/-1}
+.hero-name{
+  grid-column:1/-1;padding:26px var(--pad) 22px;
+  font-size:clamp(42px,13.2vw,132px);line-height:.94;letter-spacing:-.035em;font-weight:500;
+}
+.hero-name .l2{display:block;color:var(--wine)}
+.hero-luz{grid-column:1/-1;padding:0;position:relative;height:86px;overflow:hidden;
   background:
-    radial-gradient(120% 90% at 80% 0%, var(--accent-wash) 0%, transparent 62%),
-    var(--paper);
-  padding-block: clamp(56px, 10vw, 104px);
-  border-bottom: 1px solid var(--line);
+    radial-gradient(120% 180% at 20% 120%, rgba(214,168,150,.55) 0%, rgba(214,168,150,0) 58%),
+    radial-gradient(90% 160% at 78% -20%, rgba(99,38,58,.30) 0%, rgba(99,38,58,0) 60%),
+    #E8E2DA;
 }
+.hero-luz canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-frase{grid-column:1/-1}
+.hero-frase p{font-size:17.5px;color:var(--muted);max-width:44ch}
+.hero-frase b{color:var(--ink);font-weight:500}
+.hero-acoes{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px}
+.hero-meta{grid-column:1/-1;border-bottom:0;font-size:15px;color:var(--muted)}
+.hero-meta a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 
-.eyebrow {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--accent-deep);
-  margin-bottom: 18px;
+/* botões */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 20px;border-radius:2px;text-decoration:none;font-size:16px;font-weight:500;
+  border:1px solid transparent;transition:background .25s var(--ease),color .25s var(--ease);
+  font-family:var(--text);cursor:pointer;
 }
+.btn-p{background:var(--wine);color:#fff}
+.btn-p:hover{background:var(--wine-deep)}
+.btn-s{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-s:hover{background:var(--ink);color:var(--canvas)}
+.btn-d{border-color:rgba(240,237,231,.4);color:#F3EFE9;background:transparent}
+.btn-d:hover{background:#F3EFE9;color:var(--dark)}
+.ico{width:17px;height:17px;flex:0 0 auto}
 
-.hero h1 { font-size: clamp(40px, 8vw, 76px); letter-spacing: -0.02em; }
+/* ---------- seções ---------- */
+section{padding:64px 0}
+.eyebrow{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--wine);font-weight:600;margin-bottom:14px}
+h2{font-size:clamp(30px,7.2vw,52px);letter-spacing:-.028em;line-height:1.02}
+h3{font-size:21px;letter-spacing:-.012em}
+.lead{font-size:18px;color:var(--muted);margin-top:20px}
 
-.hero__sub {
-  margin-top: 20px;
-  font-size: clamp(18px, 2.4vw, 21px);
-  color: var(--ink-70);
-  max-width: 34rem;
+/* quem chega */
+.dor-lista{margin-top:36px;border-top:1px solid var(--line)}
+.dor-item{border-bottom:1px solid var(--line);padding:22px 0;display:grid;gap:8px}
+.dor-item p{color:var(--muted);font-size:16.5px;max-width:60ch}
+.cena{
+  margin-top:36px;height:210px;border-radius:2px;
+  background-color:#DED4CC;
+  background-image:radial-gradient(120% 140% at 15% 100%, rgba(99,38,58,.35), rgba(99,38,58,0) 62%),
+                   radial-gradient(100% 120% at 85% 0%, rgba(232,197,176,.85), rgba(232,197,176,0) 65%);
+  background-size:cover;background-position:center;position:relative;
 }
+.cena .cena-foto{position:absolute;inset:0;background-size:cover;background-position:center;border-radius:2px}
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 32px;
+/* serviços */
+.servicos{display:grid;gap:0;margin-top:34px;border-top:1px solid var(--line)}
+.serv{border-bottom:1px solid var(--line);padding:20px 0}
+.serv h3{margin-bottom:6px}
+.serv p{color:var(--muted);font-size:16.5px;max-width:58ch}
+.nota{margin-top:22px;border:1px solid var(--line);background:var(--paper);padding:18px;border-radius:2px;font-size:16px;color:var(--muted)}
+.nota b{color:var(--ink);font-weight:600}
+
+/* passos */
+.passos{counter-reset:p;margin-top:36px}
+.passo{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line)}
+.passo:last-child{border-bottom:1px solid var(--line)}
+.passo .n{font-family:var(--display);font-size:26px;color:var(--wine);line-height:1}
+.passo p{color:var(--muted);font-size:16.5px;margin-top:6px;max-width:56ch}
+
+/* banda escura */
+.banda{background:var(--dark);color:#F3EFE9;padding:72px 0}
+.banda h2{color:#fff}
+.banda .lead{color:var(--dark-muted)}
+.fatos{margin-top:38px;display:grid;gap:0;border-top:1px solid rgba(243,239,233,.16)}
+.fato{padding:20px 0;border-bottom:1px solid rgba(243,239,233,.16)}
+.fato h3{color:#fff;font-size:19px;margin-bottom:6px}
+.fato p{color:var(--dark-muted);font-size:16.5px;max-width:56ch}
+.banda-cena{
+  margin-top:38px;height:200px;border-radius:2px;
+  background-color:#3A2F2B;
+  background-image:radial-gradient(110% 150% at 80% 0%, rgba(232,197,176,.42), rgba(232,197,176,0) 60%),
+                   radial-gradient(90% 120% at 10% 110%, rgba(99,38,58,.6), rgba(99,38,58,0) 62%);
+  position:relative;overflow:hidden;
 }
+.banda-cena .cena-foto{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.9}
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 17px;
-  font-weight: 600;
-  padding: 15px 26px;
-  border-radius: 10px;
-  text-decoration: none;
-  border: 1.5px solid transparent;
-  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+/* faq */
+details{border-bottom:1px solid var(--line)}
+details summary{
+  list-style:none;cursor:pointer;padding:20px 40px 20px 0;position:relative;
+  font-family:var(--display);font-size:19px;font-weight:500;letter-spacing:-.01em;
 }
-.btn--primary {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 8px 20px -10px var(--accent);
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"";position:absolute;right:6px;top:27px;width:13px;height:1px;background:var(--ink)}
+details summary::before{content:"";position:absolute;right:12px;top:21px;width:1px;height:13px;background:var(--ink);transition:opacity .25s var(--ease)}
+details[open] summary::before{opacity:0}
+details .resp{padding:0 0 22px;color:var(--muted);font-size:16.5px;max-width:60ch}
+.faq-top{border-top:1px solid var(--line);margin-top:34px}
+
+/* formulário */
+.form-bloco{background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:24px;margin-top:32px}
+label{display:block;font-size:14.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-weight:600}
+input,select,textarea{
+  width:100%;font-family:var(--text);font-size:16.5px;color:var(--ink);
+  background:var(--canvas);border:1px solid var(--line);border-radius:2px;padding:13px 14px;
 }
-.btn--primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
-.btn--ghost { border-color: var(--line); color: var(--ink); background: var(--paper); }
-.btn--ghost:hover { border-color: var(--ink-45); }
+input:focus,select:focus,textarea:focus{outline:2px solid var(--wine);outline-offset:1px}
+.campo{margin-bottom:18px}
+textarea{min-height:96px;resize:vertical}
+.erro{color:var(--wine);font-size:14.5px;margin-top:6px;display:none}
+.campo.invalido .erro{display:block}
+.campo.invalido input,.campo.invalido select{border-color:var(--wine)}
+.form-ou{margin-top:18px;font-size:15.5px;color:var(--muted)}
+.form-ou a{color:var(--ink);font-weight:500}
 
-/* ── trust strip ──────────────────────────────────────────── */
-.strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border-bottom: 1px solid var(--line);
+/* chamada final */
+.final{
+  position:relative;overflow:hidden;background:var(--wine-deep);color:#F7F0EF;padding:76px 0;
 }
-.strip > div { background: var(--surface); padding: 26px 20px; }
-.strip dt { font-size: 13px; color: var(--ink-45); margin-bottom: 6px; }
-.strip dd {
-  margin: 0;
-  font-family: var(--display);
-  font-size: 26px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+.final .cena-foto{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.28}
+.final .wrap{position:relative}
+.final h2{color:#fff;max-width:16ch}
+.final p{color:#E4CFD3;margin-top:18px;max-width:48ch;font-size:17.5px}
+.final .acoes{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+
+/* rodapé */
+footer{background:var(--canvas);border-top:1px solid var(--line);padding:56px 0 96px}
+.rod-grid{display:grid;gap:32px}
+.rod h4{font-family:var(--display);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
+.rod p,.rod a{font-size:16px;color:var(--ink);text-decoration:none;display:block;margin-bottom:6px}
+.rod a{border-bottom:1px solid var(--line);display:inline-block}
+.rod-aviso{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted);max-width:70ch}
+
+/* fab */
+.fab{
+  position:fixed;right:14px;bottom:14px;z-index:70;
+  display:inline-flex;align-items:center;gap:8px;background:var(--wine);color:#fff;
+  text-decoration:none;padding:12px 15px;border-radius:40px;font-size:15px;font-weight:500;
+  border:1px solid rgba(255,255,255,.16);
+  transition:opacity .3s var(--ease),transform .3s var(--ease);
 }
+.fab.oculto{opacity:0;transform:translateY(14px);pointer-events:none}
 
-/* ── content ──────────────────────────────────────────────── */
-.section { padding-block: clamp(48px, 8vw, 88px); }
-.section + .section { border-top: 1px solid var(--line); }
+/* entrada */
+.an{animation:sobe .9s var(--ease) both}
+.an2{animation-delay:.09s}.an3{animation-delay:.18s}.an4{animation-delay:.27s}.an5{animation-delay:.36s}
+@keyframes sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
-.cols {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(32px, 5vw, 64px);
+@media (min-width:720px){
+  :root{--pad:32px}
+  body{font-size:17.5px}
+  section{padding:104px 0}
+  .nav-links{display:flex}
+  .burger{display:none}
+  .hero-grid{grid-template-columns:repeat(12,1fr)}
+  .hero-name{grid-column:1/9;padding:56px 34px 44px;font-size:clamp(72px,8.6vw,124px)}
+  .hero-luz{grid-column:9/13;height:auto;min-height:280px;border-bottom:1px solid var(--line)}
+  .hero-frase{grid-column:1/6;padding:30px 34px;border-right:1px solid var(--line)}
+  .hero-acoes{grid-column:6/9;padding:30px 34px;align-content:center;border-right:1px solid var(--line)}
+  .hero-meta{grid-column:9/13;padding:30px 34px;border-bottom:1px solid var(--line)}
+  .servicos{grid-template-columns:1fr 1fr;column-gap:48px}
+  .serv{padding:24px 0}
+  .fatos{grid-template-columns:1fr 1fr;column-gap:56px}
+  .cena,.banda-cena{height:300px}
+  .form-bloco{padding:40px}
+  .form-linha{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
+  .rod-grid{grid-template-columns:repeat(4,1fr)}
+  .dor-lista{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+  .fab{right:24px;bottom:24px}
 }
-
-.section h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.015em; margin-bottom: 18px; }
-.section p + p { margin-top: 14px; }
-.lede { color: var(--ink-70); }
-
-.hours { width: 100%; border-collapse: collapse; margin-top: 8px; }
-.hours td { padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
-.hours td:last-child { text-align: right; color: var(--ink-70); white-space: nowrap; }
-.hours tr:last-child td { border-bottom: 0; }
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 28px;
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
 }
-.card h3 { font-size: 21px; margin-bottom: 10px; }
-.card p { color: var(--ink-70); font-size: 16px; }
-
-.contact-line {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 16px;
-}
-.contact-line dt { color: var(--ink-45); }
-.contact-line dd { margin: 0; font-weight: 500; text-align: right; }
-.contact-line a { color: var(--accent-deep); text-decoration: none; font-weight: 600; }
-
-/* ── call to action ───────────────────────────────────────── */
-.cta {
-  background: var(--ink);
-  color: #fff;
-  padding-block: clamp(48px, 8vw, 88px);
-  text-align: center;
-}
-.cta h2 { font-size: clamp(30px, 5vw, 44px); color: #fff; }
-.cta p { color: #aeb7c4; margin-top: 14px; font-size: 18px; }
-.cta .actions { justify-content: center; }
-.cta .btn--ghost { background: transparent; color: #fff; border-color: #39414e; }
-.cta .btn--ghost:hover { border-color: #fff; }
-
-/* ── footer ───────────────────────────────────────────────── */
-.foot {
-  background: var(--surface);
-  padding-block: 40px;
-  font-size: 14px;
-  color: var(--ink-45);
-  border-top: 1px solid var(--line);
-}
-.foot .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
-.foot a { color: var(--ink-70); }
-
-@media (prefers-reduced-motion: reduce) {
-  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-}
-
-/* Estado inicial das animacoes. Tudo aqui depende de .js-anim, que so existe
-   quando ha JS e o usuario aceita movimento. Sem a classe, a pagina renderiza
-   normalmente -- nada de conteudo invisivel por falha de script. */
-.js-anim .anim-up   { opacity: 0; transform: translateY(20px); }
-.js-anim .anim-in   { opacity: 0; }
-.js-anim .hours tr  { opacity: 0; }
-.js-anim .strip > div { opacity: 0; transform: translateY(14px); }
 </style>
 </head>
 <body>
 
-<div class="proposal">
-  <div class="wrap">
-    <span>Este é um site de demonstração, feito de graça para <b>Original Espaço de Beleza</b> — não é a página oficial da empresa.</span>
-    <span>Feito por Gabriel Alderige</span>
-  </div>
+<div class="aviso">
+  Este é um site de demonstração, feito de graça para Original Espaço de Beleza <strong>não é a página oficial da empresa.</strong>
+  <span>Feito por Gabriel Alderige</span>
 </div>
 
-<header class="hero">
-  <div class="wrap">
-    <p class="eyebrow anim-up">Salão de beleza · Poços de Caldas, MG</p>
+<nav class="nav" id="nav">
+  <input type="checkbox" id="menu-toggle" aria-hidden="true">
+  <div class="nav-grid">
+    <div class="nav-cell">
+      <a class="nav-brand" href="#topo">Original<em>Espaço de Beleza</em></a>
+    </div>
+    <div class="nav-links">
+      <a href="#atendimento">Atendimento</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#como">Como funciona</a>
+      <a href="#faq">Dúvidas</a>
+      <a href="#agendar">Agendar</a>
+    </div>
+    <div class="nav-cell" style="gap:10px">
+      <label class="burger" for="menu-toggle" aria-label="Abrir menu"><span></span></label>
+      <a class="nav-cta" href="https://wa.me/553537216342">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l2 1c.2.1.4.2.4.3.1.1.1.6-.1 1.2z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="menu-mobile">
+    <a href="#atendimento">Atendimento</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#como">Como funciona</a>
+    <a href="#faq">Dúvidas</a>
+    <a href="#agendar">Agendar horário</a>
+  </div>
+</nav>
 
-    <h1 class="anim-up">Original Espaço de Beleza</h1>
+<header class="hero" id="topo">
+  <div class="hero-grid">
+    <h1 class="hero-name an">Original<span class="l2">Espaço de Beleza</span></h1>
 
-    <p class="hero__sub anim-up">Salão de beleza em Poços de Caldas, MG. Ligue, passe aqui ou veja o mapa abaixo.</p>
+    <div class="hero-luz an an2" aria-hidden="true">
+      <canvas id="luz"></canvas>
+    </div>
 
-    <div class="actions anim-up">
-      <a class="btn btn--primary" href="tel:+553537216342">Ligar (35) 3721-6342</a>
-      <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=-21.792555809020996,-46.56277847290039" target="_blank" rel="noopener">Como chegar</a>
+    <div class="cell hero-frase an an3">
+      <p><b>Salão de beleza em Poços de Caldas.</b> Cabelo, unhas e cuidados de rotina, com hora marcada pelo WhatsApp.</p>
+    </div>
+
+    <div class="cell hero-acoes an an4">
+      <a class="btn btn-p" href="https://wa.me/553537216342">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l2 1c.2.1.4.2.4.3.1.1.1.6-.1 1.2z"/></svg>
+        Agendar no WhatsApp
+      </a>
+      <a class="btn btn-s" href="tel:+553537216342">Ligar (35) 3721-6342</a>
+    </div>
+
+    <div class="cell hero-meta an an5">
+      R. 15 de Novembro, 303<br>
+      Poços de Caldas, MG<br>
+      <a href="https://www.google.com/maps/search/?api=1&query=-21.792555809020996,-46.56277847290039">Como chegar</a>
     </div>
   </div>
 </header>
 
-
-<section class="section anim-up">
-  <div class="wrap cols">
-    <div>
-      <h2>Sobre Original Espaço de Beleza</h2>
-      <p class="lede">Original Espaço de Beleza — salão de beleza em Poços de Caldas. Endereço: R. 15 de Novembro, 303. O jeito mais rápido de falar com a equipe é por telefone.</p>
+<section id="atendimento">
+  <div class="wrap">
+    <div class="col">
+      <p class="eyebrow">Quem chega aqui</p>
+      <h2>A pessoa não quer um serviço. Quer sair daqui parecida com ela mesma.</h2>
+      <p class="lead">Quase todo mundo que procura salão chega com uma dúvida antes do serviço: vai ficar bom em mim? Por isso a conversa vale tanto quanto a técnica. Entender o cabelo que a pessoa tem, a rotina que ela leva e o tempo que ela realmente tem para cuidar em casa é o que evita frustração depois.</p>
     </div>
 
-    <div class="card anim-up">
-      <h3>Contato</h3>
-      <dl style="margin:14px 0 0">
-        <div class="contact-line"><dt>Telefone</dt><dd><a href="tel:+553537216342">(35) 3721-6342</a></dd></div>
-        <div class="contact-line"><dt>Endereço</dt><dd>R. 15 de Novembro, 303</dd></div>
-        <div class="contact-line" style="border-bottom:0"><dt>Mapa</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=-21.792555809020996,-46.56277847290039" target="_blank" rel="noopener">Abrir no Google Maps</a></dd></div>
-      </dl>
+    <div class="dor-lista">
+      <div class="dor-item">
+        <h3>Medo de mudar demais</h3>
+        <p>Vontade de cortar existe, coragem nem sempre. Conversar antes sobre comprimento, formato do rosto e o que dá para manter em casa transforma decisão difícil em decisão tranquila.</p>
+      </div>
+      <div class="dor-item">
+        <h3>Cor que não sai como imaginou</h3>
+        <p>Coloração depende do histórico do fio. Cabelo que já passou por química responde diferente de cabelo virgem, e nenhuma foto de referência muda esse ponto de partida.</p>
+      </div>
+      <div class="dor-item">
+        <h3>Cabelo bonito só no dia</h3>
+        <p>Resultado que dura depende de corte bem feito e de rotina simples em casa. Vale sair do salão sabendo qual produto usar e com que frequência.</p>
+      </div>
+      <div class="dor-item">
+        <h3>Tempo curto</h3>
+        <p>Quem trabalha o dia inteiro precisa saber quanto tempo o serviço leva antes de marcar. Química e escova pedem mais horas que um corte ou uma esmaltação.</p>
+      </div>
+    </div>
+
+    <div class="cena">
+      <div class="cena-foto" style="background-image:url('img/salao.jpg')"></div>
     </div>
   </div>
 </section>
 
-
-<section class="cta anim-up">
+<section id="servicos" style="border-top:1px solid var(--line)">
   <div class="wrap">
-    <h2>Gostou do site?</h2>
-    <p>Levei alguns minutos para montar, e ele é seu se quiser. Dá para colocar no seu próprio domínio, incluir fotos, cardápio ou formulário de agendamento, e manter atualizado.</p>
-    <div class="actions anim-up">
-      <a class="btn btn--primary" href="https://wa.me/5535998416972?text=Oi%2C%20vi%20o%20site%20que%20voc%C3%AA%20fez%20para%20Original%20Espa%C3%A7o%20de%20Beleza" target="_blank" rel="noopener">Chamar no WhatsApp</a>
-      <a class="btn btn--ghost" href="tel:+55 35 99841-6972">Ligar (35) 99841-6972</a>
+    <div class="col">
+      <p class="eyebrow">Serviços do ramo</p>
+      <h2>O que costuma existir em salão de beleza</h2>
+      <p class="lead">A lista abaixo é o repertório comum da profissão, com uma linha sobre o que cada coisa muda para quem senta na cadeira.</p>
+    </div>
+
+    <div class="servicos">
+      <div class="serv">
+        <h3>Corte feminino e masculino</h3>
+        <p>Corte na tesoura leva mais tempo que na máquina, e é isso que segura o formato por mais semanas antes da próxima ida ao salão.</p>
+      </div>
+      <div class="serv">
+        <h3>Coloração e retoque de raiz</h3>
+        <p>Retoque cuida da faixa nova de crescimento sem repetir tinta no comprimento inteiro, o que preserva o fio de castigo desnecessário.</p>
+      </div>
+      <div class="serv">
+        <h3>Mechas, luzes e iluminado</h3>
+        <p>Descoloração é processo, não instante. Costuma pedir mais de uma sessão quando o cabelo já tem cor antiga, e tonalizante é o que dá o acabamento.</p>
+      </div>
+      <div class="serv">
+        <h3>Hidratação e tratamento</h3>
+        <p>Fio ressecado, quebrado e sem brilho pedem coisas diferentes. Uma avaliação rápida define se o caso é hidratação, nutrição ou reconstrução.</p>
+      </div>
+      <div class="serv">
+        <h3>Escova e finalização</h3>
+        <p>Escova bem feita alinha sem chapar o volume da raiz. Dura mais quando o cabelo não é lavado no mesmo dia e dorme protegido.</p>
+      </div>
+      <div class="serv">
+        <h3>Manicure e pedicure</h3>
+        <p>Cutícula tratada com cuidado e esmaltação bem selada nas pontas é o que faz a unha durar a semana toda sem lascar na beirada.</p>
+      </div>
+      <div class="serv">
+        <h3>Design de sobrancelha</h3>
+        <p>O desenho acompanha o osso e a expressão do rosto. Tirar de menos e voltar depois é sempre melhor que tirar demais e esperar crescer.</p>
+      </div>
+      <div class="serv">
+        <h3>Penteado e maquiagem</h3>
+        <p>Para festa, formatura ou casamento, marcar com antecedência garante horário em dia cheio e tempo de prova quando ela é necessária.</p>
+      </div>
+    </div>
+
+    <div class="nota">
+      <b>Importante:</b> esta é a lista geral do ramo, não um cardápio da casa. Quais desses serviços o Original Espaço de Beleza faz hoje, com quais profissionais e em quais horários, quem responde é a própria equipe.
+      <a href="https://wa.me/553537216342" style="color:var(--ink);font-weight:600">Pergunte no WhatsApp.</a>
     </div>
   </div>
 </section>
 
-<footer class="foot">
+<section id="como" style="border-top:1px solid var(--line)">
   <div class="wrap">
-    <span>Site de demonstração para Original Espaço de Beleza · dados vindos de cadastros públicos da empresa na internet</span>
-    <span>Feito por Gabriel Alderige · <a href="https://gabrielalderige.github.io/portfolio/" target="_blank" rel="noopener">portfolio</a></span>
+    <div class="col">
+      <p class="eyebrow">Como funciona</p>
+      <h2>Do primeiro contato até você sair pronta pela porta</h2>
+    </div>
+    <div class="passos">
+      <div class="passo">
+        <div class="n">1</div>
+        <div>
+          <h3>Você chama pelo WhatsApp</h3>
+          <p>Diz o que procura e os dias que consegue vir. Nesse momento também dá para tirar dúvida de tempo de duração antes de fechar horário.</p>
+        </div>
+      </div>
+      <div class="passo">
+        <div class="n">2</div>
+        <div>
+          <h3>O horário é combinado</h3>
+          <p>Serviço de química e penteado ocupa a agenda por mais tempo, então costuma ser marcado com antecedência maior que um corte simples.</p>
+        </div>
+      </div>
+      <div class="passo">
+        <div class="n">3</div>
+        <div>
+          <h3>Conversa rápida antes de começar</h3>
+          <p>Olhar o cabelo, entender o histórico de química e o resultado que você quer. É aqui que expectativa e realidade se acertam, e é o passo que evita arrependimento.</p>
+        </div>
+      </div>
+      <div class="passo">
+        <div class="n">4</div>
+        <div>
+          <h3>O serviço é feito</h3>
+          <p>Com pausa para conferir a cor durante o processo quando for coloração, e ajuste de formato ainda com você na cadeira quando for corte.</p>
+        </div>
+      </div>
+      <div class="passo">
+        <div class="n">5</div>
+        <div>
+          <h3>Orientação para casa</h3>
+          <p>Como lavar, o que usar, de quanto em quanto tempo voltar para manter. Cuidado em casa é metade do resultado que você viu no espelho.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="banda">
+  <div class="wrap">
+    <div class="col">
+      <p class="eyebrow" style="color:#E0B7A6">Por que aqui</p>
+      <h2>No centro, com horário marcado por mensagem</h2>
+      <p class="lead">Salão de bairro tem uma vantagem que rede grande não copia: você fala com quem atende, e não com um sistema.</p>
+    </div>
+    <div class="fatos">
+      <div class="fato">
+        <h3>Endereço no centro de Poços de Caldas</h3>
+        <p>R. 15 de Novembro, 303. Dá para encaixar o horário entre um compromisso e outro sem atravessar a cidade.</p>
+      </div>
+      <div class="fato">
+        <h3>Está no mapa</h3>
+        <p>Chegou de carro ou a pé, o trajeto abre direto no aplicativo. <a href="https://www.google.com/maps/search/?api=1&query=-21.792555809020996,-46.56277847290039" style="color:#fff">Ver rota</a>.</p>
+      </div>
+      <div class="fato">
+        <h3>Atendimento por WhatsApp</h3>
+        <p>Mensagem resolve o combinado sem precisar ligar no meio do trabalho, e fica registrado o que ficou marcado.</p>
+      </div>
+      <div class="fato">
+        <h3>Telefone fixo para quem prefere falar</h3>
+        <p>(35) 3721-6342. Nem toda dúvida cabe em texto, e conversar é mais rápido quando o assunto é química no cabelo.</p>
+      </div>
+    </div>
+    <div class="banda-cena">
+      <div class="cena-foto" style="background-image:url('img/luz.jpg')"></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="col">
+      <p class="eyebrow">Dúvidas</p>
+      <h2>Perguntas que quase todo mundo faz antes de marcar</h2>
+    </div>
+    <div class="faq-top">
+      <details>
+        <summary>Preciso marcar horário ou posso chegar?</summary>
+        <div class="resp">Em salão, horário marcado é a regra para serviço que ocupa a cadeira por bastante tempo, como coloração, escova e penteado. Se a casa aceita encaixe no dia depende do movimento e da agenda da equipe. Mande mensagem no WhatsApp e confirme antes de sair de casa.</div>
+      </details>
+      <details>
+        <summary>Quanto tempo demora?</summary>
+        <div class="resp">Varia muito com o serviço. Corte e esmaltação costumam ser rápidos. Coloração, mechas e penteado pedem horas, porque envolvem tempo de processamento e lavagem. Diga qual serviço você quer no WhatsApp e peça a estimativa de tempo do caso.</div>
+      </details>
+      <details>
+        <summary>Quanto custa?</summary>
+        <div class="resp">Preço em salão depende de comprimento e volume de cabelo, quantidade de produto e tempo de cadeira, então não existe valor único. O caminho certo é mandar uma foto do cabelo pelo WhatsApp e pedir o orçamento para o serviço que você quer.</div>
+      </details>
+      <details>
+        <summary>Meu cabelo já tem química. Posso descolorir?</summary>
+        <div class="resp">Na maioria das vezes sim, mas com etapas. Cabelo com tinta antiga, progressiva ou alisamento responde diferente, e forçar tudo numa sessão só é o que quebra o fio. A avaliação presencial define se dá para ir de uma vez ou em mais visitas.</div>
+      </details>
+      <details>
+        <summary>Devo lavar o cabelo antes de vir?</summary>
+        <div class="resp">Para corte e escova, cabelo limpo ajuda. Para coloração e descoloração, o costume é o contrário: a oleosidade natural protege o couro cabeludo. Como a orientação muda conforme o serviço, pergunte no WhatsApp quando confirmar o horário.</div>
+      </details>
+      <details>
+        <summary>De quanto em quanto tempo devo voltar?</summary>
+        <div class="resp">Depende do que foi feito. Corte perde o formato conforme o cabelo cresce, retoque de raiz acompanha o crescimento visível, e unha costuma pedir manutenção semanal ou quinzenal. Na saída dá para combinar o próximo intervalo com quem atendeu você.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="agendar" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="col">
+      <p class="eyebrow">Agendar</p>
+      <h2>Monte sua mensagem e envie pelo WhatsApp</h2>
+      <p class="lead">Preencha, e o texto vai pronto para a conversa. Você ainda pode revisar antes de mandar.</p>
+    </div>
+
+    <div class="form-bloco">
+      <form id="form-wa" novalidate>
+        <div class="form-linha">
+          <div class="campo" id="c-nome">
+            <label for="nome">Seu nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Como podemos te chamar">
+            <div class="erro">Escreva seu nome.</div>
+          </div>
+          <div class="campo" id="c-fone">
+            <label for="fone">Seu WhatsApp</label>
+            <input id="fone" name="fone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(35) 90000-0000">
+            <div class="erro">Escreva um número com DDD.</div>
+          </div>
+        </div>
+        <div class="form-linha">
+          <div class="campo" id="c-serv">
+            <label for="serv">O que você precisa</label>
+            <select id="serv" name="serv">
+              <option value="">Escolha uma opção</option>
+              <option>Corte</option>
+              <option>Coloração ou retoque de raiz</option>
+              <option>Mechas ou luzes</option>
+              <option>Hidratação ou tratamento</option>
+              <option>Escova ou finalização</option>
+              <option>Manicure ou pedicure</option>
+              <option>Design de sobrancelha</option>
+              <option>Penteado ou maquiagem</option>
+              <option>Ainda não sei, quero orientação</option>
+            </select>
+            <div class="erro">Escolha o que você precisa.</div>
+          </div>
+          <div class="campo">
+            <label for="quando">Melhor dia e período</label>
+            <input id="quando" name="quando" type="text" placeholder="Ex.: sexta de manhã">
+          </div>
+        </div>
+        <div class="campo">
+          <label for="obs">Quer contar mais alguma coisa?</label>
+          <textarea id="obs" name="obs" placeholder="Histórico do cabelo, alergia, evento com data, o que vier"></textarea>
+        </div>
+        <button class="btn btn-p" type="submit" style="width:100%">
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l2 1c.2.1.4.2.4.3.1.1.1.6-.1 1.2z"/></svg>
+          Enviar pelo WhatsApp
+        </button>
+      </form>
+      <p class="form-ou">Prefere ir direto? <a href="https://wa.me/553537216342">Abrir conversa no WhatsApp</a> ou ligar para <a href="tel:+553537216342">(35) 3721-6342</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="cena-foto" style="background-image:url('img/detalhe.jpg')"></div>
+  <div class="wrap">
+    <h2>Seu horário começa com uma mensagem</h2>
+    <p>Original Espaço de Beleza, na R. 15 de Novembro, 303, no centro de Poços de Caldas.</p>
+    <div class="acoes">
+      <a class="btn btn-p" style="background:#F3EFE9;color:var(--wine-deep)" href="https://wa.me/553537216342">Falar no WhatsApp</a>
+      <a class="btn btn-d" href="https://www.google.com/maps/search/?api=1&query=-21.792555809020996,-46.56277847290039">Como chegar</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="rod-grid">
+      <div class="rod">
+        <h4>Casa</h4>
+        <p style="font-family:var(--display);font-size:19px">Original Espaço de Beleza</p>
+        <p style="color:var(--muted)">Salão de beleza em Poços de Caldas</p>
+      </div>
+      <div class="rod">
+        <h4>Endereço</h4>
+        <p>R. 15 de Novembro, 303</p>
+        <p>Poços de Caldas, MG</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=-21.792555809020996,-46.56277847290039">Ver no mapa</a>
+      </div>
+      <div class="rod">
+        <h4>Contato</h4>
+        <a href="tel:+553537216342">(35) 3721-6342</a><br>
+        <a href="https://wa.me/553537216342">WhatsApp</a>
+      </div>
+      <div class="rod">
+        <h4>Na internet</h4>
+        <a href="https://www.facebook.com/102545446580170">Facebook</a>
+        <p style="color:var(--muted);font-size:15px;margin-top:8px">Horário de atendimento: confirme pelo WhatsApp.</p>
+      </div>
+    </div>
+    <p class="rod-aviso">
+      Este é um site de demonstração, feito de graça para Original Espaço de Beleza não é a página oficial da empresa. Feito por Gabriel Alderige.
+    </p>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<a class="fab" id="fab" href="https://wa.me/553537216342">
+  <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l2 1c.2.1.4.2.4.3.1.1.1.6-.1 1.2z"/></svg>
+  Agendar
+</a>
+
 <script>
-(function () {
-  var raiz = document.documentElement;
-  function desligar() { raiz.className = raiz.className.replace(" js-anim", ""); }
+(function(){
+  var nav=document.getElementById('nav'), fab=document.getElementById('fab'), tog=document.getElementById('menu-toggle');
+  function onScroll(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    nav.classList.toggle('scrolled', y>8);
+    fab.classList.toggle('oculto', y<340);
+  }
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  document.querySelectorAll('.menu-mobile a').forEach(function(a){a.addEventListener('click',function(){tog.checked=false;});});
 
-  /* Rede de seguranca: se o GSAP nao carregar (CDN fora, bloqueador, rede do
-     cliente), o estado inicial das animacoes deixaria a pagina em branco.
-     Melhor uma pagina estatica do que uma pagina vazia. */
-  if (!window.gsap || !window.ScrollTrigger) { desligar(); return; }
-  if (raiz.className.indexOf("js-anim") === -1) { return; }
-
-  gsap.registerPlugin(ScrollTrigger);
-  var facil = "power2.out";
-
-  /* Entrada do topo: o nome do negocio e o que precisa chegar primeiro. */
-  var t = gsap.timeline({ defaults: { duration: 0.7, ease: facil } });
-  t.to(".hero .anim-up", { opacity: 1, y: 0, stagger: 0.09 });
-
-  /* Barra de numeros: entra junto e conta o valor, quando existir. */
-  gsap.to(".strip > div", {
-    opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: facil,
-    scrollTrigger: { trigger: ".strip", start: "top 88%" }
-  });
-
-  document.querySelectorAll(".strip dd").forEach(function (dd) {
-    var texto = dd.textContent.trim();
-    /* Preserva o que nao e numero. "6 dias/semana" tem que voltar como
-       "6 dias/semana", nao como "6" -- o contador ja comeu esse sufixo uma vez. */
-    var partes = texto.match(/^([^0-9]*)([0-9][0-9.,]*)(.*)$/);
-    if (!partes) { return; }
-    var prefixo = partes[1], sufixo = partes[3];
-    var estrela = texto.indexOf("★") !== -1;
-    var alvo = parseFloat(texto.replace(/[^0-9.,]/g, "").replace(",", "."));
-    if (isNaN(alvo) || alvo <= 0) { return; }
-    var casas = estrela ? 1 : 0;
-    var obj = { v: 0 };
-    gsap.to(obj, {
-      v: alvo, duration: 1.1, ease: facil,
-      scrollTrigger: { trigger: dd, start: "top 92%" },
-      onUpdate: function () {
-        var n = casas ? obj.v.toFixed(1) : Math.round(obj.v).toLocaleString("pt-BR");
-        dd.textContent = prefixo + n + sufixo;
+  /* artefato: luz de espelho */
+  var cv=document.getElementById('luz');
+  if(cv && cv.getContext){
+    var ctx=cv.getContext('2d'), w=0,h=0,dpr=Math.min(window.devicePixelRatio||1,2), t=0;
+    var reduz = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function size(){
+      var r=cv.getBoundingClientRect(); w=r.width; h=r.height;
+      cv.width=Math.max(1,w*dpr); cv.height=Math.max(1,h*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      var cx=w*0.5, cy=h*0.55, base=Math.max(w,h);
+      for(var i=0;i<5;i++){
+        var f=i/5, r=base*(0.18+f*0.62) + Math.sin(t/60+i)*base*0.012;
+        var g=ctx.createRadialGradient(cx,cy,r*0.55,cx,cy,r);
+        g.addColorStop(0,'rgba(255,238,226,'+(0.16-f*0.025)+')');
+        g.addColorStop(1,'rgba(99,38,58,0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fill();
       }
+      ctx.strokeStyle='rgba(36,31,29,0.16)'; ctx.lineWidth=1;
+      for(var j=0;j<7;j++){
+        var rr=base*(0.10+j*0.11)+Math.sin(t/90+j*0.7)*base*0.008;
+        ctx.beginPath(); ctx.arc(cx,cy,rr,Math.PI*0.08,Math.PI*0.92); ctx.stroke();
+      }
+      if(!reduz){ t+=1; requestAnimationFrame(draw); }
+    }
+    size(); draw();
+    window.addEventListener('resize',function(){ size(); if(reduz) draw(); });
+  }
+
+  /* formulário vira mensagem */
+  var f=document.getElementById('form-wa');
+  if(f){
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var nome=f.nome.value.trim(), fone=f.fone.value.trim(), serv=f.serv.value,
+          quando=f.quando.value.trim(), obs=f.obs.value.trim(), ok=true;
+      function marca(id,cond){ document.getElementById(id).classList.toggle('invalido',!cond); if(!cond) ok=false; }
+      marca('c-nome', nome.length>1);
+      marca('c-fone', fone.replace(/\D/g,'').length>=10);
+      marca('c-serv', serv!=='');
+      if(!ok){ var bad=f.querySelector('.invalido input, .invalido select'); if(bad) bad.focus(); return; }
+      var msg='Olá! Meu nome é '+nome+'. Vim pelo site e gostaria de agendar: '+serv+'.';
+      if(quando) msg+=' O melhor dia e período para mim é '+quando+'.';
+      if(obs) msg+=' Observação: '+obs+'.';
+      msg+=' Meu WhatsApp é '+fone+'.';
+      window.location.href='https://wa.me/553537216342?text='+encodeURIComponent(msg);
     });
-  });
-
-  /* Blocos de conteudo sobem conforme a rolagem. */
-  gsap.utils.toArray(".anim-up:not(.hero .anim-up)").forEach(function (el) {
-    if (el.closest(".hero")) { return; }
-    gsap.to(el, {
-      opacity: 1, y: 0, duration: 0.7, ease: facil,
-      scrollTrigger: { trigger: el, start: "top 85%" }
-    });
-  });
-
-  /* Linhas de horario entram em cascata. */
-  gsap.to(".hours tr", {
-    opacity: 1, duration: 0.4, stagger: 0.05, ease: facil,
-    scrollTrigger: { trigger: ".hours", start: "top 85%" }
-  });
-
-  /* Se algo travar antes de rodar, mostra tudo em 2,5s. */
-  setTimeout(function () {
-    document.querySelectorAll(".js-anim .anim-up, .js-anim .strip > div, .js-anim .hours tr")
-      .forEach(function (el) {
-        var s = window.getComputedStyle(el);
-        if (parseFloat(s.opacity) === 0) { el.style.opacity = 1; el.style.transform = "none"; }
-      });
-  }, 2500);
+  }
 })();
 </script>
+
+<script type="application/json" id="prompts-de-imagem">
+[{"arquivo":"img/salao.jpg","aspecto":"3:2",
+  "prompt":"Editorial interior detail of a small neighbourhood hair salon in Brazil, wide horizontal framing, a styling chair and a large mirror seen at an angle, glass shelf with combs and brushes slightly out of focus in the foreground, warm golden-hour daylight entering from a side window, soft haze, warm parchment and dusty rose palette with deep wine shadows, muted contrast, film grain, no people, no faces, no text, no logos"},
+ {"arquivo":"img/luz.jpg","aspecto":"3:2",
+  "prompt":"Close atmospheric detail of a lit vanity mirror edge in a beauty salon at dusk, warm bulb glow flaring softly against a dark brown wall, shallow depth of field, deep espresso and wine tones with warm peach highlights, cinematic low-key lighting, subtle bokeh, no people, no faces, no text, no logos"},
+ {"arquivo":"img/detalhe.jpg","aspecto":"16:9",
+  "prompt":"Abstract macro texture of soft warm light reflecting on a mirrored surface, faint condensation and dust particles, deep maroon and cream tones, extremely soft focus, cinematic and quiet, suitable as a subtle dark background layer behind white text, no people, no objects recognizable, no text, no logos"}]
+</script>
+
 </body>
 </html>
