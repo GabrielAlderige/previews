@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alfa Estética Automotiva — Poços de Caldas</title>
+<meta name="description" content="Estética automotiva em Poços de Caldas. Tv. Zanata, 35. Fale no WhatsApp. Página de demonstração.">
+<meta name="theme-color" content="#070A0F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --breu:#070A0F;
+  --aco:#0C1118;
+  --cromo:#AFBECB;
+  --perola:#EEF4F8;
+  --anil:#3C6BFF;
+  --flake:#9B6BFF;
+  --disp:'Archivo','Arial Narrow',system-ui,sans-serif;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--breu);color:var(--perola);
+  font-family:var(--sans);font-size:16.5px;line-height:1.58;
+  padding-bottom:74px;overflow-x:hidden;
+}
+@media(min-width:861px){body{padding-bottom:0}}
+a{color:inherit}
+img,canvas{display:block;max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+@media(min-width:861px){.wrap{padding:0 40px}}
+
+/* ---------- aviso ---------- */
+.aviso{
+  position:relative;background:var(--perola);color:#0B1017;
+  padding:11px 16px 12px 22px;font-family:var(--mono);font-size:12.2px;line-height:1.45;
+  border-bottom:1px solid #0B1017;
+}
+.aviso::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:8px;
+  background:repeating-linear-gradient(135deg,#0B1017 0 5px,var(--anil) 5px 10px);
+}
+.aviso b{font-weight:500}
+.aviso span{display:block;margin-top:3px;color:#3E4C5A}
+@media(min-width:700px){.aviso{font-size:13px;padding-left:26px}}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  min-height:86vh;min-height:86svh;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:20px 20px 34px;background:#080C12;
+}
+@media(min-width:861px){.hero{padding:32px 40px 56px;min-height:88svh}}
+#verniz{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:38%;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(7,10,15,0) 0%,rgba(7,10,15,.72) 62%,var(--breu) 100%);
+}
+.hero-loc{
+  display:flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:#93A6B6;
+}
+.hero-loc svg{flex:none;opacity:.8}
+.hero-foot{max-width:960px}
+.word{
+  margin:0;font-family:var(--disp);font-weight:800;text-transform:uppercase;
+  font-size:clamp(4rem,27vw,12.5rem);line-height:.8;letter-spacing:-.04em;
+  color:#D8E4EE;
+  background:linear-gradient(174deg,#FFFFFF 2%,#C3D1DC 17%,#78899A 33%,#EAF3F9 46%,#FEFEFF 52%,#8FA2B1 63%,#586878 75%,#C9D8E3 90%,#F4F9FC 100%);
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 10px 26px rgba(0,0,0,.55));
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .word{-webkit-text-fill-color:transparent}
+}
+.hero-rule{
+  height:1px;margin:22px 0 16px;transform-origin:left center;
+  background:linear-gradient(90deg,rgba(220,235,250,.85),rgba(60,107,255,.5) 30%,rgba(155,107,255,.35) 55%,rgba(175,190,203,0) 100%);
+}
+.hero-sub{
+  margin:0 0 10px;font-family:var(--mono);font-size:clamp(.72rem,3vw,.9rem);
+  letter-spacing:.24em;text-transform:uppercase;color:#B9C8D5;
+}
+.hero-pitch{
+  margin:0 0 26px;max-width:31ch;font-size:clamp(1.02rem,4.1vw,1.32rem);
+  line-height:1.42;color:#C8D5E0;
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px}
+
+/* ---------- botões ---------- */
+.btn{
+  position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 22px;border-radius:5px;text-decoration:none;
+  font-family:var(--disp);font-weight:600;font-size:15.5px;letter-spacing:.005em;
+  border:1px solid transparent;
+}
+.btn svg{flex:none}
+.btn-chrome{
+  flex:1 1 100%;
+  background:linear-gradient(180deg,#FFFFFF 0%,#E4EDF3 44%,#A9BBC9 52%,#E9F2F8 78%,#FBFDFE 100%);
+  color:#080C12;border-color:rgba(255,255,255,.7);
+  box-shadow:0 10px 30px rgba(60,107,255,.16),inset 0 1px 0 #fff;
+}
+.btn-chrome::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(102deg,transparent 36%,rgba(255,255,255,.95) 47%,transparent 58%);
+  transform:translateX(-130%);animation:gloss 6s 1.6s infinite;
+}
+@keyframes gloss{0%{transform:translateX(-130%)}22%,100%{transform:translateX(130%)}}
+.btn-ghost{
+  background:rgba(12,17,24,.5);color:#DCE7EF;border-color:rgba(175,190,203,.32);
+  backdrop-filter:blur(4px);font-weight:600;
+}
+.btn-dark{background:#0B1017;color:#F3F8FB;border-color:#0B1017}
+.btn-line{background:transparent;color:#0B1017;border-color:rgba(11,16,23,.3)}
+@media(min-width:560px){.btn-chrome{flex:0 0 auto}}
+a.btn:focus-visible,a:focus-visible{outline:2px solid var(--anil);outline-offset:3px}
+
+/* ---------- prática ---------- */
+.pratica{
+  background:var(--aco);
+  background-image:linear-gradient(rgba(175,190,203,.05) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(175,190,203,.05) 1px,transparent 1px);
+  background-size:66px 66px;
+  border-top:1px solid rgba(175,190,203,.14);
+  padding:56px 0 60px;
+}
+.gutter{font-family:var(--mono);font-size:12px;color:#6F8394;letter-spacing:.06em;margin:0 0 14px}
+.pratica h2{
+  margin:0 0 14px;font-family:var(--disp);font-weight:800;letter-spacing:-.025em;
+  font-size:clamp(1.7rem,7vw,2.7rem);line-height:1.06;max-width:16ch;color:#EDF3F8;
+}
+.lead{margin:0 0 30px;max-width:52ch;color:#B3C2CF}
+.itens{border-top:1px solid rgba(175,190,203,.16)}
+.item{
+  display:grid;grid-template-columns:30px 1fr;gap:16px;align-items:start;
+  padding:20px 0;border-bottom:1px solid rgba(175,190,203,.16);
+}
+.item svg{margin-top:2px;color:#7FA0D8}
+.item h3{margin:0 0 4px;font-family:var(--disp);font-weight:600;font-size:1.06rem;color:#E7EFF5;letter-spacing:0}
+.item p{margin:0;font-size:.95rem;color:#9FAFBD;line-height:1.5}
+.ressalva{
+  margin:26px 0 0;padding-left:16px;border-left:2px solid var(--anil);
+  font-size:.95rem;color:#A9B9C6;max-width:50ch;
+}
+@media(min-width:861px){
+  .pratica{padding:88px 0 92px}
+  .pratica .wrap{display:grid;grid-template-columns:170px 1fr;gap:48px;align-items:start}
+  .gutter{margin:6px 0 0}
+  .itens{margin-top:6px}
+}
+
+/* ---------- contato ---------- */
+.contato{
+  background:linear-gradient(180deg,#EFF5F9 0%,#DCE7EF 100%);
+  color:#0B1017;padding:52px 0 58px;
+}
+.plate{position:relative}
+.plate::before,.plate::after{
+  content:"";position:absolute;width:16px;height:16px;border:1px solid rgba(11,16,23,.35);
+}
+.plate::before{top:-14px;left:20px;border-right:0;border-bottom:0}
+.plate::after{bottom:-16px;right:20px;border-left:0;border-top:0}
+.contato h2{
+  margin:0 0 22px;font-family:var(--disp);font-weight:800;letter-spacing:-.025em;
+  font-size:clamp(1.6rem,6.4vw,2.3rem);line-height:1.08;
+}
+.dados{margin:0 0 22px;display:grid;gap:0}
+.dados > div{
+  padding:14px 0;border-bottom:1px solid rgba(11,16,23,.14);
+  display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:baseline;
+}
+.dados dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#5C6B79}
+.dados dd{margin:0;font-family:var(--disp);font-weight:600;font-size:1.03rem;line-height:1.35}
+.dados dd a{text-decoration:none;border-bottom:1px solid rgba(11,16,23,.35)}
+.coord{display:block;margin-top:4px;font-family:var(--mono);font-weight:400;font-size:11.5px;color:#5C6B79;letter-spacing:.02em}
+.nota{margin:0 0 24px;font-size:.95rem;color:#42505E;max-width:46ch}
+.acoes{display:flex;flex-wrap:wrap;gap:10px}
+.acoes .btn{flex:1 1 100%}
+@media(min-width:560px){.acoes .btn{flex:0 0 auto}}
+@media(min-width:861px){
+  .contato{padding:80px 0 86px}
+  .contato .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+  .contato h2{grid-column:1/-1;margin-bottom:30px;max-width:14ch}
+}
+
+/* ---------- rodapé ---------- */
+footer{background:var(--breu);border-top:1px solid rgba(175,190,203,.16);padding:30px 0 36px}
+footer p{margin:0 0 8px;font-family:var(--mono);font-size:12px;line-height:1.6;color:#7C8E9D;max-width:62ch}
+footer a{color:#B9C8D5}
+
+/* ---------- dock ---------- */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:8px;
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+  background:rgba(7,10,15,.9);backdrop-filter:blur(9px);
+  border-top:1px solid rgba(175,190,203,.2);
+}
+.dock .btn{padding:13px 16px;font-size:15px}
+.dock .btn-chrome{flex:1 1 auto}
+.dock .btn-ghost{flex:0 0 auto}
+@media(min-width:861px){.dock{display:none}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso">
+  <b>Este é um site de demonstração, feito de graça para Alfa Estética Automotiva — não é a página oficial da empresa.</b>
+  <span>Feito por Gabriel Alderige</span>
+</div>
+
+<header class="hero">
+  <canvas id="verniz" aria-hidden="true"></canvas>
+
+  <p class="hero-loc">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.2"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/>
+    </svg>
+    Poços de Caldas
+  </p>
+
+  <div class="hero-foot">
+    <h1 class="word">Alfa</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">Estética automotiva</p>
+    <p class="hero-pitch">Limpo, qualquer lavagem deixa. O brilho que aguenta o sol de meio-dia é outro trabalho.</p>
+    <div class="hero-cta">
+      <a class="btn btn-chrome" href="https://wa.me/553537155245">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.5 11.8c0 4.7-3.9 8.5-8.6 8.5-1.5 0-2.9-.4-4.1-1L3.5 20.6l1.4-4.1c-.7-1.2-1.1-2.7-1.1-4.2 0-4.7 3.9-8.5 8.6-8.5s8.1 3.8 8.1 8z"/>
+          <path d="M9.2 8.7c.4-.1.7 0 .9.4l.7 1.3c.1.3.1.5-.1.8l-.4.5c-.1.2-.2.4 0 .7.5.9 1.3 1.6 2.3 2 .3.1.5.1.7-.1l.5-.5c.2-.2.5-.3.8-.2l1.3.6"/>
+        </svg>
+        Chamar no WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="tel:+553537155245">(35) 3715-5245</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=-21.78936004638672,-46.59224510192871">Como chegar</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pratica">
+    <div class="wrap">
+      <p class="gutter">o serviço</p>
+      <div>
+        <h2>Estética automotiva, na prática</h2>
+        <p class="lead">Não é lavagem de posto. É trabalho de superfície: tirar o que está grudado na pintura sem riscar, corrigir o que já riscou e deixar uma camada que segura sujeira e sol pelos próximos meses.</p>
+
+        <div class="itens">
+          <div class="item">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3.2s5.3 5.6 5.3 9.1A5.3 5.3 0 0 1 12 17.6a5.3 5.3 0 0 1-5.3-5.3C6.7 8.8 12 3.2 12 3.2z"/>
+              <path d="M9.6 12.6a2.4 2.4 0 0 0 2.4 2.4"/>
+            </svg>
+            <div>
+              <h3>Lavagem detalhada</h3>
+              <p>Feita por etapas, com atenção a frestas, soleiras, rodas, caixas de roda e vidros — os lugares onde a sujeira realmente mora.</p>
+            </div>
+          </div>
+          <div class="item">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="7.2"/>
+              <path d="M12 4.8A7.2 7.2 0 0 1 19.2 12"/>
+              <circle cx="12" cy="12" r="2.4"/>
+            </svg>
+            <div>
+              <h3>Polimento</h3>
+              <p>Correção de riscos finos, marcas de lavagem e opacidade. É o que devolve profundidade à cor e faz o reflexo voltar a ser nítido.</p>
+            </div>
+          </div>
+          <div class="item">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3.4l6.4 2.3v5.6c0 3.7-2.6 7-6.4 8.3-3.8-1.3-6.4-4.6-6.4-8.3V5.7L12 3.4z"/>
+              <path d="M9.4 12.1l1.9 1.9 3.4-3.7"/>
+            </svg>
+            <div>
+              <h3>Proteção da pintura</h3>
+              <p>Cera, selante ou vitrificação criam uma camada sobre o verniz: a água escorre, a poeira gruda menos e a lavagem seguinte fica mais fácil.</p>
+            </div>
+          </div>
+          <div class="item">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.4 19.2v-2.4h11.2v2.4"/>
+              <path d="M8.1 16.8V6.6c0-1 .8-1.8 1.8-1.8h4.2c1 0 1.8.8 1.8 1.8v10.2"/>
+              <path d="M8.1 10.6h7.8"/>
+            </svg>
+            <div>
+              <h3>Higienização interna</h3>
+              <p>Bancos, carpete, teto, painel e ar-condicionado. Sujeira e cheiro saem de dentro, não são cobertos com perfume.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="ressalva">Cada casa trabalha com um conjunto próprio de serviços. Mande o modelo do carro e o que te incomoda no WhatsApp e pergunte o que a Alfa Estética Automotiva faz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contato" id="contato">
+    <div class="wrap">
+      <h2>Onde a Alfa fica</h2>
+      <div class="plate">
+        <dl class="dados">
+          <div>
+            <dt>Endereço</dt>
+            <dd>Tv. Zanata, 35<br>Poços de Caldas
+              <span class="coord">−21.789360, −46.592245</span>
+            </dd>
+          </div>
+          <div>
+            <dt>Telefone</dt>
+            <dd><a href="tel:+553537155245">(35) 3715-5245</a></dd>
+          </div>
+          <div>
+            <dt>Na internet</dt>
+            <dd><a href="https://www.facebook.com/1344272978958878" rel="noopener">Página no Facebook</a></dd>
+          </div>
+        </dl>
+      </div>
+      <div>
+        <p class="nota">Horário de funcionamento, prazos e valores não estão publicados aqui — pergunte direto no WhatsApp, é o caminho mais curto.</p>
+        <div class="acoes">
+          <a class="btn btn-dark" href="https://wa.me/553537155245">Chamar no WhatsApp</a>
+          <a class="btn btn-line" href="tel:+553537155245">Ligar agora</a>
+          <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=-21.78936004638672,-46.59224510192871">Como chegar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Este é um site de demonstração, feito de graça para Alfa Estética Automotiva — não é a página oficial da empresa. Feito por Gabriel Alderige.</p>
+    <p>Presença online da empresa hoje: <a href="https://www.facebook.com/1344272978958878" rel="noopener">Facebook</a>.</p>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn-chrome" href="https://wa.me/553537155245">WhatsApp</a>
+  <a class="btn btn-ghost" href="tel:+553537155245" aria-label="Ligar para (35) 3715-5245">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6.2 3.8h3l1.4 3.6-2 1.3a11.4 11.4 0 0 0 5.1 5.1l1.3-2 3.6 1.4v3a1.7 1.7 0 0 1-1.9 1.7C10.5 17.4 6 12.9 4.5 5.7A1.7 1.7 0 0 1 6.2 3.8z"/>
+    </svg>
+    Ligar
+  </a>
+</div>
+
+<script>
+(function(){
+  var hero=document.querySelector('.hero'),c=document.getElementById('verniz');
+  if(!c||!c.getContext||!hero)return;
+  var ctx=c.getContext('2d'),off=document.createElement('canvas'),octx=off.getContext('2d');
+  var W=0,H=0,dpr=1,flakes=[],raf=null,t0=0,visible=true;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function glow(g,x,y,rx,ry,rot,col,a){
+    if(rx<=0||ry<=0)return;
+    g.save();g.globalCompositeOperation='lighter';
+    g.translate(x,y);g.rotate(rot);g.scale(rx,ry);
+    var rg=g.createRadialGradient(0,0,0,0,0,1);
+    rg.addColorStop(0,'rgba('+col+','+a+')');
+    rg.addColorStop(.5,'rgba('+col+','+(a*0.34)+')');
+    rg.addColorStop(1,'rgba('+col+',0)');
+    g.fillStyle=rg;g.beginPath();g.arc(0,0,1,0,6.2832);g.fill();
+    g.restore();
+  }
+
+  function base(){
+    octx.setTransform(dpr,0,0,dpr,0,0);
+    octx.clearRect(0,0,W,H);
+    var bg=octx.createLinearGradient(0,0,W*.35,H);
+    bg.addColorStop(0,'#0C121B');bg.addColorStop(.42,'#090E15');
+    bg.addColorStop(.74,'#0D141D');bg.addColorStop(1,'#05080C');
+    octx.fillStyle=bg;octx.fillRect(0,0,W,H);
+    glow(octx,W*.14,H*.16,W*.78,H*.55,0,'60,107,255',.11);
+    glow(octx,W*1.0,H*.78,W*.62,H*.5,0,'155,107,255',.075);
+    var r=-0.19;
+    glow(octx,W*.56,H*.235,W*.78,Math.max(2,H*.020),r,'190,215,245',.22);
+    glow(octx,W*.42,H*.40,W*.64,Math.max(2,H*.013),r,'186,210,242',.14);
+    glow(octx,W*.66,H*.585,W*.86,Math.max(2,H*.009),r,'210,230,255',.11);
+    glow(octx,W*.5,H*1.04,W*.95,H*.2,0,'140,170,205',.10);
+    var v=octx.createRadialGradient(W*.5,H*.44,Math.min(W,H)*.18,W*.5,H*.5,Math.max(W,H)*.8);
+    v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.66)');
+    octx.fillStyle=v;octx.fillRect(0,0,W,H);
+  }
+
+  function seed(){
+    var n=Math.max(50,Math.min(150,Math.round(W*H/9500)));
+    flakes=[];
+    for(var i=0;i<n;i++){
+      flakes.push({x:Math.random()*W,y:Math.random()*H,
+        r:.35+Math.random()*1.05,ph:Math.random()*6.28,sp:.5+Math.random()*1.7});
+    }
+  }
+
+  function size(){
+    var r=hero.getBoundingClientRect();
+    if(r.width<2||r.height<2)return;
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    W=Math.round(r.width);H=Math.round(r.height);
+    c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);
+    off.width=c.width;off.height=c.height;
+    base();seed();frame(reduce?3000:performance.now());
+  }
+
+  function frame(now){
+    if(!t0)t0=now;
+    var t=(now-t0)/1000;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,W,H);
+    ctx.globalCompositeOperation='source-over';
+    ctx.drawImage(off,0,0,W,H);
+    var p=((t+2.5)/9)%1,sx=-0.42*W+p*1.84*W;
+    glow(ctx,sx,H*.5,W*.11,H*.8,-0.19,'150,190,255',.13);
+    glow(ctx,sx+W*.045,H*.5,W*.045,H*.74,-0.19,'255,255,255',.14);
+    glow(ctx,sx+W*.105,H*.5,W*.07,H*.76,-0.19,'160,110,255',.09);
+    ctx.globalCompositeOperation='lighter';
+    for(var i=0;i<flakes.length;i++){
+      var f=flakes[i],d=(f.x-sx)/(W*.22),prox=Math.exp(-d*d);
+      var tw=.5+.5*Math.sin(t*f.sp+f.ph);
+      var a=Math.min(.9,.05+.08*tw+prox*(.32+.45*tw));
+      ctx.fillStyle='rgba(228,240,252,'+a.toFixed(3)+')';
+      ctx.beginPath();ctx.arc(f.x,f.y,f.r*(1+prox*.7),0,6.2832);ctx.fill();
+    }
+    ctx.globalCompositeOperation='source-over';
+    if(!reduce&&visible)raf=requestAnimationFrame(frame);
+  }
+
+  function play(){if(reduce)return;if(raf===null){t0=0;raf=requestAnimationFrame(frame);}}
+  function stop(){if(raf!==null){cancelAnimationFrame(raf);raf=null;}}
+
+  size();
+  if(!reduce)play();
+
+  var rt;
+  window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(size,180);},{passive:true});
+  if(window.ResizeObserver){new ResizeObserver(function(){clearTimeout(rt);rt=setTimeout(size,180);}).observe(hero);}
+  if(window.IntersectionObserver){
+    new IntersectionObserver(function(e){
+      visible=e[0].isIntersecting;
+      if(visible)play();else stop();
+    },{threshold:0}).observe(hero);
+  }
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden)stop();else if(visible)play();
+  });
+})();
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script>
+window.addEventListener('load',function(){
+  if(!window.gsap)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var tl=gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.from('.hero-loc',{opacity:0,y:-10,duration:.55})
+    .from('.word',{clipPath:'inset(0 0 108% 0)',y:26,duration:1.15,ease:'power4.out'},'-=.25')
+    .from('.hero-rule',{scaleX:0,duration:.85,ease:'power2.out'},'-=.62')
+    .from('.hero-sub',{opacity:0,y:12,duration:.55},'-=.55')
+    .from('.hero-pitch',{opacity:0,y:12,duration:.6},'-=.42')
+    .from('.hero-cta > *',{opacity:0,y:12,duration:.5,stagger:.07},'-=.38');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vivi Beauty Estética e Esmalteria — Poços de Caldas</title>
+<meta name="description" content="Vivi Beauty Estética e Esmalteria — Salão de beleza em Poços de Caldas. R. Rio Grande do Norte, 332. Fale no WhatsApp.">
+<meta name="theme-color" content="#150E1A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap"></noscript>
+<style>
+  :root{
+    --noite:#150E1A;
+    --ameixa:#2A1830;
+    --ouro:#E7B15C;
+    --luz:#FFF2D6;
+    --quartzo:#E2B8C4;
+    --marfim:#F6EEE7;
+    --nevoa:#C3AFBD;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--noite);
+    color:var(--marfim);
+    font-family:'Jost',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    font-weight:300;
+    font-size:17px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:88px;
+    overflow-x:hidden;
+  }
+  a{color:inherit}
+  .wrap{width:100%;max-width:640px;margin:0 auto;padding:0 24px}
+
+  /* ---------- aviso ---------- */
+  .aviso{
+    background:var(--ameixa);
+    border-bottom:1px solid rgba(231,177,92,.32);
+    padding:14px 22px;
+    font-size:13.5px;
+    line-height:1.55;
+    color:#EFE2E8;
+  }
+  .aviso strong{font-weight:500;color:var(--luz)}
+  .aviso span{display:block;margin-top:3px;color:var(--ouro);font-size:12.5px;letter-spacing:.04em}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:38px 0 54px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;left:50%;top:-140px;
+    width:760px;height:620px;transform:translateX(-50%);
+    background:radial-gradient(ellipse at 50% 40%, rgba(231,177,92,.20), rgba(226,184,196,.09) 42%, transparent 70%);
+    pointer-events:none;
+  }
+  .cidade{
+    position:relative;
+    font-size:12.5px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--quartzo);margin:0 0 26px;
+  }
+  .mirror{
+    position:relative;
+    width:min(84vw,332px);
+    margin:0 auto;
+    aspect-ratio:400/620;
+  }
+  .mirror svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .plate{
+    position:absolute;left:9%;right:9%;top:17%;bottom:6%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:4px;
+  }
+  .nome{
+    font-family:'Italiana',Georgia,serif;
+    font-weight:400;
+    font-size:clamp(2.3rem,10.5vw,3.15rem);
+    line-height:.96;
+    letter-spacing:.01em;
+    margin:0;
+    color:var(--luz);
+    text-shadow:0 0 26px rgba(255,226,175,.30);
+  }
+  .nome em{display:block;font-style:normal}
+  .sub{
+    font-size:10.5px;letter-spacing:.30em;text-transform:uppercase;
+    color:var(--quartzo);margin-top:12px;line-height:1.9;
+  }
+  .refl{
+    margin-top:14px;
+    transform:scaleY(-1);
+    opacity:.22;
+    -webkit-mask-image:linear-gradient(to top,transparent,#000 90%);
+    mask-image:linear-gradient(to top,transparent,#000 90%);
+    pointer-events:none;
+  }
+  .refl .nome{font-size:clamp(1.5rem,6.6vw,2rem);text-shadow:none}
+
+  .tagline{
+    position:relative;
+    font-family:'Italiana',Georgia,serif;
+    font-size:clamp(1.35rem,6vw,1.7rem);
+    line-height:1.35;
+    color:var(--marfim);
+    margin:34px auto 0;
+    max-width:19ch;
+  }
+  .tagline b{font-weight:400;color:var(--ouro)}
+
+  .acoes{position:relative;margin-top:26px}
+  .zap{
+    display:inline-block;
+    background:linear-gradient(160deg,#F8CE81,#DDA04B);
+    color:#22121D;
+    font-weight:500;font-size:16.5px;letter-spacing:.02em;
+    text-decoration:none;
+    padding:16px 40px;
+    border-radius:100px;
+    box-shadow:0 10px 34px -12px rgba(231,177,92,.75);
+  }
+  .zap:active{transform:translateY(1px)}
+  .menores{
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--nevoa);
+    display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;
+  }
+  .menores a{color:var(--marfim);text-decoration:none;border-bottom:1px solid rgba(231,177,92,.5);padding-bottom:2px}
+  .menores i{font-style:normal;color:rgba(226,184,196,.45)}
+
+  /* ---------- divisor ---------- */
+  .div{
+    display:flex;align-items:center;gap:16px;
+    margin:0 auto;padding:52px 0;
+  }
+  .div span{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(231,177,92,.45),transparent)}
+  .div svg{width:16px;height:16px;fill:var(--ouro);flex:none;opacity:.9}
+
+  /* ---------- texto ---------- */
+  h2{
+    font-family:'Italiana',Georgia,serif;
+    font-weight:400;
+    font-size:clamp(1.75rem,7.5vw,2.3rem);
+    line-height:1.2;
+    margin:0 0 18px;
+    color:var(--luz);
+  }
+  p{margin:0 0 18px;color:#D8C9D2;max-width:44ch}
+  p.claro{color:var(--marfim)}
+
+  .nomeplaca{
+    font-family:'Italiana',Georgia,serif;
+    font-size:clamp(1.5rem,6.4vw,2rem);
+    color:var(--ouro);
+    line-height:1.3;
+    margin:26px 0 20px;
+    padding-left:18px;
+    border-left:1px solid rgba(231,177,92,.5);
+  }
+
+  /* ---------- endereço ---------- */
+  .visita{
+    margin-top:8px;
+    padding:34px 0 6px;
+  }
+  .rua{
+    font-family:'Italiana',Georgia,serif;
+    font-size:clamp(1.9rem,8.6vw,2.6rem);
+    line-height:1.15;
+    color:var(--luz);
+    margin:0 0 6px;
+  }
+  .cidade2{color:var(--quartzo);font-size:15px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:26px}
+  .linhas{border-top:1px solid rgba(246,238,231,.14)}
+  .linha{
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(246,238,231,.14);
+    font-size:15.5px;
+  }
+  .linha em{font-style:normal;color:var(--nevoa);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase}
+  .linha a{color:var(--luz);text-decoration:none;border-bottom:1px solid rgba(231,177,92,.55);padding-bottom:2px}
+
+  /* ---------- rodapé ---------- */
+  footer{
+    margin-top:56px;
+    background:var(--ameixa);
+    border-top:1px solid rgba(231,177,92,.28);
+    padding:30px 24px 34px;
+    font-size:13.5px;
+    line-height:1.7;
+    color:#CDBCC6;
+  }
+  footer .assin{color:var(--ouro);margin-top:10px;letter-spacing:.05em}
+
+  /* ---------- barra fixa ---------- */
+  .barra{
+    position:fixed;left:0;right:0;bottom:0;z-index:40;
+    display:flex;gap:10px;align-items:center;
+    padding:11px 14px calc(11px + env(safe-area-inset-bottom));
+    background:rgba(21,14,26,.90);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    border-top:1px solid rgba(231,177,92,.3);
+  }
+  .barra .p{
+    flex:1;text-align:center;text-decoration:none;
+    background:linear-gradient(160deg,#F8CE81,#DDA04B);
+    color:#22121D;font-weight:500;font-size:16px;
+    padding:14px 10px;border-radius:100px;
+  }
+  .barra .s{
+    flex:none;width:50px;height:50px;border-radius:50%;
+    border:1px solid rgba(231,177,92,.45);
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;color:var(--luz);
+  }
+  .barra .s svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+  @keyframes flick{0%,100%{opacity:1}50%{opacity:.82}}
+  @keyframes sweep{0%{transform:translateX(-60%)}100%{transform:translateX(160%)}}
+  .bulb{animation:flick 5.5s ease-in-out infinite}
+  .sweep{animation:sweep 11s linear infinite}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso">
+  <strong>Este é um site de demonstração, feito de graça para Vivi Beauty Estética e Esmalteria — não é a página oficial da empresa.</strong>
+  <span>Feito por Gabriel Alderige</span>
+</div>
+
+<header class="hero">
+  <p class="cidade">Poços de Caldas</p>
+
+  <div class="mirror">
+    <svg viewBox="0 0 400 620" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFE6B4" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#FFE6B4" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="vidro" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4A2C50" stop-opacity=".95"/>
+          <stop offset="55%" stop-color="#2A1830" stop-opacity=".95"/>
+          <stop offset="100%" stop-color="#1B1022" stop-opacity=".95"/>
+        </linearGradient>
+        <linearGradient id="brilho" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#FFF2D6" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#FFF2D6" stop-opacity=".13"/>
+          <stop offset="100%" stop-color="#FFF2D6" stop-opacity="0"/>
+        </linearGradient>
+        <clipPath id="corte">
+          <path d="M22,200 A178,178 0 0 1 378,200 L378,578 L22,578 Z"/>
+        </clipPath>
+        <g id="lamp">
+          <circle r="15" fill="url(#halo)"/>
+          <circle r="5.2" fill="#FFF6E2"/>
+        </g>
+      </defs>
+
+      <path d="M0,200 A200,200 0 0 1 400,200 L400,600 L0,600 Z" fill="#241430" stroke="rgba(231,177,92,.55)" stroke-width="1"/>
+      <path d="M22,200 A178,178 0 0 1 378,200 L378,578 L22,578 Z" fill="url(#vidro)" stroke="rgba(231,177,92,.7)" stroke-width="1"/>
+      <g clip-path="url(#corte)">
+        <rect class="sweep" x="-120" y="0" width="160" height="620" fill="url(#brilho)"/>
+      </g>
+
+      <g class="lamps">
+        <use class="bulb" href="#lamp" transform="translate(0,200)" style="animation-delay:0s"/>
+        <use class="bulb" href="#lamp" transform="translate(6.8,148.2)" style="animation-delay:.3s"/>
+        <use class="bulb" href="#lamp" transform="translate(26.8,100)" style="animation-delay:.6s"/>
+        <use class="bulb" href="#lamp" transform="translate(58.6,58.6)" style="animation-delay:.9s"/>
+        <use class="bulb" href="#lamp" transform="translate(100,26.8)" style="animation-delay:1.2s"/>
+        <use class="bulb" href="#lamp" transform="translate(148.2,6.8)" style="animation-delay:1.5s"/>
+        <use class="bulb" href="#lamp" transform="translate(200,0)" style="animation-delay:1.8s"/>
+        <use class="bulb" href="#lamp" transform="translate(251.8,6.8)" style="animation-delay:2.1s"/>
+        <use class="bulb" href="#lamp" transform="translate(300,26.8)" style="animation-delay:2.4s"/>
+        <use class="bulb" href="#lamp" transform="translate(341.4,58.6)" style="animation-delay:2.7s"/>
+        <use class="bulb" href="#lamp" transform="translate(373.2,100)" style="animation-delay:3s"/>
+        <use class="bulb" href="#lamp" transform="translate(393.2,148.2)" style="animation-delay:3.3s"/>
+        <use class="bulb" href="#lamp" transform="translate(400,200)" style="animation-delay:3.6s"/>
+        <use class="bulb" href="#lamp" transform="translate(0,262)" style="animation-delay:.45s"/>
+        <use class="bulb" href="#lamp" transform="translate(0,326)" style="animation-delay:1.05s"/>
+        <use class="bulb" href="#lamp" transform="translate(0,390)" style="animation-delay:1.65s"/>
+        <use class="bulb" href="#lamp" transform="translate(0,454)" style="animation-delay:2.25s"/>
+        <use class="bulb" href="#lamp" transform="translate(0,518)" style="animation-delay:2.85s"/>
+        <use class="bulb" href="#lamp" transform="translate(0,582)" style="animation-delay:3.45s"/>
+        <use class="bulb" href="#lamp" transform="translate(400,262)" style="animation-delay:3.9s"/>
+        <use class="bulb" href="#lamp" transform="translate(400,326)" style="animation-delay:3.3s"/>
+        <use class="bulb" href="#lamp" transform="translate(400,390)" style="animation-delay:2.7s"/>
+        <use class="bulb" href="#lamp" transform="translate(400,454)" style="animation-delay:2.1s"/>
+        <use class="bulb" href="#lamp" transform="translate(400,518)" style="animation-delay:1.5s"/>
+        <use class="bulb" href="#lamp" transform="translate(400,582)" style="animation-delay:.9s"/>
+      </g>
+    </svg>
+
+    <div class="plate">
+      <h1 class="nome"><em>Vivi</em><em>Beauty</em></h1>
+      <div class="sub">Estética e Esmalteria</div>
+      <div class="refl" aria-hidden="true">
+        <div class="nome">Vivi Beauty</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="tagline">Salão de beleza em Poços de Caldas, com <b>hora marcada</b> pelo WhatsApp.</p>
+
+  <div class="acoes">
+    <a class="zap" href="https://wa.me/5535988076827">Falar no WhatsApp</a>
+    <div class="menores">
+      <a href="tel:+5535988076827">(35) 98807-6827</a>
+      <i>|</i>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=-21.792654991149902,-46.56646728515625">Como chegar</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="div"><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12C8 11 11 8 12 0Z"/></svg><span></span></div>
+</div>
+
+<main>
+  <section class="wrap">
+    <h2>Uma cadeira, uma luz boa e o tempo que é seu</h2>
+    <p class="claro">Tem semana que não sobra nada para a gente. Sentar, deixar alguém cuidar, sair pela porta se sentindo outra pessoa — é isso que um salão de bairro faz pela vizinhança, e é por isso que a agenda enche.</p>
+    <p>Aqui na página não dá para mostrar as mãos, o brilho da unha nova nem a pele descansada depois do atendimento. Isso só ao vivo, na R. Rio Grande do Norte.</p>
+
+    <p class="nomeplaca">No nome estão duas palavras:<br>Estética e Esmalteria.</p>
+    <p>O que está na agenda desta semana, quanto tempo leva cada atendimento e qual horário está livre — quem responde é o salão, direto no WhatsApp. É a resposta mais rápida e mais certa.</p>
+
+    <p style="margin-top:26px">
+      <a class="zap" href="https://wa.me/5535988076827">Ver um horário no WhatsApp</a>
+    </p>
+  </section>
+
+  <div class="wrap">
+    <div class="div"><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12C8 11 11 8 12 0Z"/></svg><span></span></div>
+  </div>
+
+  <section class="wrap visita" id="visita">
+    <p class="rua">R. Rio Grande<br>do Norte, 332</p>
+    <p class="cidade2">Poços de Caldas</p>
+
+    <div class="linhas">
+      <div class="linha"><em>WhatsApp</em><a href="https://wa.me/5535988076827">Chamar agora</a></div>
+      <div class="linha"><em>Telefone</em><a href="tel:+5535988076827">(35) 98807-6827</a></div>
+      <div class="linha"><em>Chegar</em><a href="https://www.google.com/maps/search/?api=1&amp;query=-21.792654991149902,-46.56646728515625">Abrir no mapa</a></div>
+      <div class="linha"><em>Onde já estamos</em><a href="https://www.facebook.com/166820263897979">Facebook</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="padding:0">
+    Página de demonstração, sem vínculo oficial com Vivi Beauty Estética e Esmalteria. Todos os contatos acima são os contatos públicos do salão.
+    <div class="assin">Feito por Gabriel Alderige</div>
+  </div>
+</footer>
+
+<nav class="barra" aria-label="Contato rápido">
+  <a class="p" href="https://wa.me/5535988076827">WhatsApp</a>
+  <a class="s" href="tel:+5535988076827" aria-label="Ligar para (35) 98807-6827">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L16 12l4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4 6.2 2 2 0 0 1 6 4Z"/></svg>
+  </a>
+  <a class="s" href="https://www.google.com/maps/search/?api=1&amp;query=-21.792654991149902,-46.56646728515625" aria-label="Como chegar">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+  </a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js" defer></script>
+<script>
+window.addEventListener('load', function(){
+  if(!window.gsap) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var tl = gsap.timeline({defaults:{ease:'power2.out'}});
+  tl.from('.cidade',{opacity:0,duration:.6})
+    .from('.lamps use',{opacity:0,duration:.5,stagger:{each:.035,from:'center'}},'-=.2')
+    .from('.plate .nome, .plate .sub',{opacity:0,y:10,duration:.7,stagger:.09},'-=.7')
+    .from('.refl',{opacity:0,duration:.9},'-=.3')
+    .from('.tagline',{opacity:0,y:12,duration:.7},'-=.6')
+    .from('.acoes',{opacity:0,y:12,duration:.6},'-=.45');
+
+  if(window.ScrollTrigger){
+    gsap.utils.toArray('.div span').forEach(function(el){
+      gsap.from(el,{scaleX:.2,opacity:0,duration:1,ease:'power2.out',
+        scrollTrigger:{trigger:el,start:'top 88%'}});
+    });
+    gsap.from('.linha',{opacity:0,duration:.5,stagger:.08,
+      scrollTrigger:{trigger:'.linhas',start:'top 85%'}});
+  }
+});
+</script>
+</body>
+</html>
